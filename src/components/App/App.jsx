@@ -31,8 +31,9 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <GalleryList list={galleryList} render={getGallery}/>
-        {/* <img src="images/goat_small.jpg"/> */}
+        <body className="App-body">
+          <GalleryList list={galleryList} render={getGallery}/>
+        </body>
       </div>
     );
 }

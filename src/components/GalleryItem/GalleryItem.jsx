@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios'
+import './GalleryItem.css'
 
 function GalleryItem({item, render}) {
     // console.log('GalleryItem is running');
@@ -31,7 +32,7 @@ function GalleryItem({item, render}) {
 
     return (
         <>
-            <div key={item.id}>
+            <div key={item.id} className="galleryItemDiv">
                 {picVis ? 
                     <img src={item.path} onClick={toggleVis} /> :
                     <div onClick={toggleVis}>{item.description}</div>
