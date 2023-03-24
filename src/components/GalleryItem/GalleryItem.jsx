@@ -38,6 +38,10 @@ function GalleryItem({item, render}) {
                     <div onClick={toggleVis}>{item.description}</div>
                 }
                 <button onClick={() => addLike(item.id)}>Likes {item.likes}</button>
+                {item.likes === 0 ?
+                    <p>No people like this 😭</p> :
+                    <p>{item.likes} people like this!</p>
+                }
             </div>
         </>
     )
