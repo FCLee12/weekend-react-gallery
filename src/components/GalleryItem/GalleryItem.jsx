@@ -17,7 +17,7 @@ function GalleryItem({item, render}) {
         setPicVis(!picVis);
     }
 
-    // PUT
+    // Client-Side PUT
     const addLike = (id) => {
         axios({
         method: 'PUT',
