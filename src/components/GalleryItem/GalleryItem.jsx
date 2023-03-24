@@ -1,7 +1,8 @@
 import { useState } from "react";
+import axios from 'axios'
 
-function GalleryItem({item}) {
-    console.log('GalleryItem is running');
+function GalleryItem({item, render}) {
+    // console.log('GalleryItem is running');
 
     // state to track likes
     const [likeCounter, setLikeCounter] = useState(0);
@@ -15,15 +16,28 @@ function GalleryItem({item}) {
         setPicVis(!picVis);
     }
 
+    // PUT
+    const addLike = (id) => {
+        axios({
+        method: 'PUT',
+        url: `/gallery/like/${id}`
+        }).then((response) => {
+        console.log('Like added', response);
+        render();
+        }).catch((error) => {
+        console.log('Error changing likeCounter:', error);
+        })
+    }
+
     return (
         <>
-                <div key={item.id}>
-                    {picVis ? 
-                        <img src={item.path} onClick={toggleVis} /> :
-                        <div onClick={toggleVis}>{item.description}</div>
-                    }
-                    <button>Likes {item.likes}</button>
-                </div>
+            <div key={item.id}>
+                {picVis ? 
+                    <img src={item.path} onClick={toggleVis} /> :
+                    <div onClick={toggleVis}>{item.description}</div>
+                }
+                <button onClick={() => addLike(item.id)}>Likes {item.likes}</button>
+            </div>
         </>
     )
 }

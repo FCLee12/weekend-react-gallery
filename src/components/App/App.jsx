@@ -7,6 +7,7 @@ function App() {
 
   const [galleryList, setGalleryList] = useState([]);
 
+  // GET
   function getGallery() {
     axios({
       method: 'GET',
@@ -30,8 +31,7 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <p>Gallery goes here</p>
-        <GalleryList list={galleryList} />
+        <GalleryList list={galleryList} render={getGallery}/>
         {/* <img src="images/goat_small.jpg"/> */}
       </div>
     );
